@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>git</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h2 id="toc_0">git使用</h2>
+
+<p>Git是目前世界上最先进的分布式版本控制系统</p>
+
+<p>很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。</p>
+
+<p>Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？</p>
+
+<p>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！</p>
+
+<p>你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。</p>
+
+<p>不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p>
+
+<p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了，于是BitMover公司怒了，要收回Linux社区的免费使用权。</p>
+
+<p>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：</p>
+
+<p>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。</p>
+
+<p>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</p>
+
+<p>历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。</p>
+
+<h3 id="toc_1">代码仓库</h3>
+
+<ul>
+<li><h4 id="toc_2">检出仓库:</h4>
+
+<p>进入到你仓库文件夹下面</p>
+
+<div><pre><code class="language-none">git clone https://github.com/haveguts/learnGit.git</code></pre></div>
+
+<p>访问远程仓库：</p>
+
+<p>HTTPS：读写仓库加密通道，有单次上传限制。</p>
+
+<p>SSH：读写仓库加密通道，无单次上传限制，需先在个人设置页面上传 SSH-RSA 公钥，完成配对验证。</p></li>
+<li><h4 id="toc_3">添加一个新的远程仓库</h4>
+
+<div><pre><code class="language-none">git remote add learngit https://github.com/haveguts/learnGit.git</code></pre></div>
+
+<p>用 git remote 命令来查看当前添加的远程仓库：</p>
+
+<div><pre><code class="language-none">git remote -v</code></pre></div>
+
+<p>用字符串 learngit 指代对应的仓库地址了。比如说，要抓取所有 learngit 有的，但本地仓库没有的信息，可以运行:
+<code>
+git fetch learngit
+</code></p>
+
+<p>也可以直接通过 git clone 命令来直接复制远程仓库到本地目录：</p>
+
+<div><pre><code class="language-none">git clone https://github.com/haveguts/learnGit.git</code></pre></div>
+
+<p>自己定义新建文件夹的名称，可以在上面的命令末尾指定新的名字：</p>
+
+<div><pre><code class="language-none">git clone https://github.com/haveguts/learnGit.git chinegit</code></pre></div>
+
+<p>查看当前工作目录下的文件状态</p>
+
+<div><pre><code class="language-none">git status</code></pre></div>
+
+<p>跟踪新文件 </p>
+
+<div><pre><code class="language-none">git add</code></pre></div>
+
+<p>只要在 “Changes to be committed” 这行下面的，就说明是已暂存状态。如果此时提交，那么该文件此时此刻的版本将被留存在历史记录中。</p>
+
+<p>在 git add 后面可以指明要跟踪的文件或目录路径。如果是目录的话，就说明要递归跟踪该目录下的所有文件。</p>
+
+<p>也可使用 
+<code>
+git add .
+</code>
+跟踪当前文件夹下所有文件</p>
+
+<p>现在的暂存区域已经准备妥当可以提交了。在此之前，请一定要确认还有什么修改过的或新建的文件还没有 git add 过，否则提交的时候不会记录这些还没暂存起来的变化。所以，每次准备提交前，最好先用 
+<code>git status</code> 看下，是不是都已暂存起来了，然后再运行提交命令 <code>git commit</code> 来完成提交。</p>
+
+<p>你可以直接输入 <code>git commit</code> 命令进行提交，这种方式会启动文本编辑器以便输入本次提交的说明</p>
+
+<p>默认会启用 shell 的环境变量 $EDITOR 所指定的编辑器，一般都是 vi 或 emacs，也可以通过 git config 命令来修改默认的编辑器。 以 ‘#’ 开头的行都被视为注释，在提交时将被丢弃。如果没有输入提交信息就推出编辑器，将放弃这次提交。</p></li>
+</ul>
+
+<hr>
+
+<ul>
+<li><h4 id="toc_4">把本地仓库推送到远程仓库:</h4>
+
+<p>在github新建一个空仓库</p>
+
+<p>进入本地仓库目录下运行
+<code>
+git remote add origin https://github.com/haveguts/lichentest.git
+</code></p>
+
+<p>若本地已有readme文件，则直接运行：<code>git push -u origin master</code></p>
+
+<p>若无readme文件 运行 <code>git pull --rebase origin master</code> 再运行 <code>git push -u origin master</code>推送到远程仓库</p></li>
+</ul>
+
+<hr>
+
+<ul>
+<li><h4 id="toc_5">远程仓库</h4>
+
+<div><pre><code class="language-none">git push [远程仓库名] [分支名]
+</code></pre></div>
+
+<p>如果要把本地的 master 分支推送到 origin 服务器上，可以运行下面的命令：
+<code>
+Username for &#39;https://github.com&#39;: chinelee
+</code></p>
+
+<p>出现
+<code>
+The requested URL returned error: 403
+</code></p>
+
+<p>解决方案：</p>
+
+<div><pre><code class="language-none">1.vim .gi/config
+
+2.修改 url = https://github.com/haveguts/learnGit.git 
+      url = https://chinelee@github.com/haveguts/learnGit.git</code></pre></div></li>
+</ul>
+
+<h3 id="toc_6">分支管理</h3>
+
+<ul>
+<li><h4 id="toc_7">创建分支,并切换到新分支</h4>
+
+<p>Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化！</p>
+
+<p><code>git checkout -b lichen</code></p>
+
+<p><code>git checkout</code>命令加上<code>-b</code>参数表示创建并切换，相当于以下两条命令：</p>
+
+<div><pre><code class="language-none">git branch dev
+
+git checkout dev</code></pre></div>
+
+<p>对readme.txt做个修改，加上一行：</p>
+
+<p><code>Creating a new branch is quick.</code></p>
+
+<p>跟踪文件
+<code>
+git add readme.txt 
+</code></p>
+
+<p>提交更改
+<code>
+git commit -m &quot;lichen test&quot;
+</code></p>
+
+<p>切换回master分支</p>
+
+<div><pre><code class="language-none">git checkout master</code></pre></div>
+
+<p>再查看一个readme.txt文件，刚才添加的内容不见了</p>
+
+<p>我们把刚才的分支工作成果合并到master分支上：
+<code>
+git merge lichen
+</code></p></li>
+</ul>
+
+<hr>
+
+<ul>
+<li><h4 id="toc_8">分支常用命令</h4>
+
+<div><pre><code class="language-none">查看分支：git branch
+
+创建分支：git branch &lt;name&gt;
+
+切换分支：git checkout &lt;name&gt;
+
+创建+切换分支：git checkout -b &lt;name&gt;
+
+合并某分支到当前分支：git merge &lt;name&gt;
+
+删除分支：git branch -d &lt;name&gt;</code></pre></div></li>
+<li><h4 id="toc_9">分支冲突</h4>
+
+<div><pre><code class="language-none">创建新的分支
+git checkout -b lichen
+
+修改readme 文件
+提交
+git add readme.txt 
+git commit -m &quot;&quot;
+
+切换到master
+git checkout master
+
+修改readme
+然后提交
+git add readme.txt 
+git commit -m &quot;&quot;
+
+合并分支git merge lichen
+
+查看冲突并解决
+再提交
+git add readme.txt 
+git commit -m &quot;conflict fixed&quot;</code></pre></div></li>
+</ul>
+
+<hr>
+
+<ul>
+<li><h4 id="toc_10">提示：</h4>
+
+<p><em>master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；
+每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</em></p></li>
+</ul>
+
+<hr>
+
+<ul>
+<li><h4 id="toc_11">多人合作:</h4>
+
+<p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin</p>
+
+<p>要查看远程库的信息，用<code>git remote</code></p>
+
+<p>推送分支</p>
+
+<p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
+
+<div><pre><code class="language-none">git push origin master</code></pre></div>
+
+<p>如果要推送其他分支，比如lichen，就改成：</p>
+
+<div><pre><code class="language-none">git push origin lichen</code></pre></div>
+
+<p><em>分支完全可以在本地自己藏着玩，是否推送，视你的心情而定</em></p>
+
+<p>多人协作的工作模式通常是这样：</p>
+
+<p>首先，可以试图用<code>git push origin branch-name</code>推送自己的修改；</p>
+
+<p>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；</p>
+
+<p>如果合并有冲突，则解决冲突，并在本地提交；</p>
+
+<p>没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！</p>
+
+<p>如果<code>git pull</code>提示<code>no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建，用命令</p>
+
+<p><code>git branch --set-upstream branch-name origin/branch-name</code>。</p>
+
+<p>在本地创建和远程分支对应的分支，使用</p>
+
+<p><code>git checkout -b branch-name origin/branch-name</code>
+本地和远程分支的名称最好一致</p>
+
+<p>建立本地分支和远程分支的关联</p>
+
+<p><code>git branch --set-upstream branch-name origin/branch-name</code></p></li>
+</ul>
+
+<ul>
+<li><h4 id="toc_12">标签管理</h4>
+
+<p>在Git中打标签非常简单，首先，切换到需要打标签的分支上：
+<code>git checkout lichen</code></p>
+
+<p>然后
+<code>git tag v1.0</code></p>
+
+<p><code>git tag</code> 显示已有标签</p>
+
+<p>默认标签是打在最新提交的commit上的。有时候，如果忘了打标签，比如，现在已经是周五了，但应该在周一打的标签没有打，怎么办？</p>
+
+<p>方法是找到历史提交的commit id，然后打上就可以了</p>
+
+<div><pre><code class="language-none">git log --pretty=oneline --abbrev-commit
+
+git tag v0.9 9709c97</code></pre></div>
+
+<p>查看某个标签信息
+<code>
+git show v0.9
+</code></p>
+
+<p>删除某个标签
+<code>
+git tag -d v0.9
+</code></p>
+
+<p>因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。</p>
+
+<p>如果要推送某个标签到远程，使用命令
+<code>
+git push origin &lt;tagname&gt;：
+</code></p>
+
+<p>一次性推送全部尚未推送到远程的本地标签：
+<code>
+git push origin --tags
+</code></p>
+
+<p>如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
+<code>
+git tag -d v0.9
+</code></p>
+
+<p>再从远程删除</p>
+
+<div><pre><code class="language-none">git push origin :refs/tags/v1.0</code></pre></div></li>
+<li><h4 id="toc_13">版本回退</h4>
+
+<p>查看log
+<code>
+git log
+</code></p>
+
+<div><pre><code class="language-none">git reset --hard d4b9e11711d286bb</code></pre></div>
+
+<p>后悔了怎么办？
+<code>
+git reflog
+</code></p></li>
+<li><h4 id="toc_14">删除文件</h4>
+
+<p>删除文件 
+<code>
+git rm filename
+</code></p>
+
+<p>误删恢复
+<code>git reset head lichen.py</code></p>
+
+<p><code>git checkout -- filename</code></p></li>
+</ul>
+
+<hr>
+
+<p>在GitHub上，可以任意Fork开源仓库；</p>
+
+<p>自己拥有Fork后的仓库的读写权限；</p>
+
+<p>可以推送pull request给官方仓库来贡献代码。</p>
+
+<hr>
+
+<p>工作区（Working Directory）</p>
+
+<p>版本库（Repository）
+工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
+
+<p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
+
+<p>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
+
+<p>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支</p>
+
+<h3 id="toc_15">SSH</h3>
+
+<p>Windows下打开Git Bash
+ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</p>
+
+<p>GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
+
+
+
+
+</body>
+
+</html>
